@@ -378,6 +378,52 @@ nav.hide{transform:translateY(-110%)}
 #cta .t2{font-size:11px;letter-spacing:.22em;color:rgba(11,12,16,.75);text-transform:uppercase;margin-top:4px;font-weight:700}
 @media(max-width:760px){.tile{width:178px;height:178px}.tile .tx{padding:22px 30px}.tile .n{font-size:24px}.tile .n.small{font-size:18px}.tile .l{font-size:8px}}
 
+/* ---------- WHITELIST ---------- */
+#wl{position:relative;background:var(--ink);padding:120px 0 110px;overflow:hidden}
+.wl-h{text-align:center;position:relative}
+.wl-h .anton{font-size:clamp(40px,6.6vw,104px);text-transform:uppercase;color:var(--bone);
+  text-shadow:0 3px 0 #1d2130,0 7px 0 #171a26,0 16px 30px rgba(0,0,0,.5)}
+.wl-h .script{display:block;margin-top:14px;font-size:clamp(24px,3vw,42px);color:var(--gold-2);transform:rotate(-2deg)}
+.wl-steps{max-width:660px;margin:58px auto 0;display:grid;gap:14px}
+.wstep{position:relative;display:flex;align-items:center;gap:18px;padding:20px 22px;border-radius:20px;
+  background:#1a1d26;box-shadow:inset 0 1px 1px rgba(255,255,255,.06);flex-wrap:wrap;
+  transition:outline-color .3s;outline:2px solid transparent}
+.wstep.done{outline-color:rgba(230,177,58,.55)}
+.wstep .nb{position:relative;width:46px;height:46px;flex:none}
+.wstep .nb svg{width:100%;height:100%}
+.wstep .nb i{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;
+  font-family:'Anton';font-size:18px;color:var(--bone)}
+.wstep.done .nb path{fill:var(--gold)}
+.wstep.done .nb i{color:var(--void)}
+.wstep .tt{flex:1;min-width:180px}
+.wstep .tt b{display:block;font-size:15px;color:var(--bone)}
+.wstep .tt small{color:#8a93a8;font-size:12.5px}
+.wbtn{font-weight:700;font-size:12px;letter-spacing:.1em;padding:13px 20px;border-radius:14px;
+  background:var(--bone);color:var(--void);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .15s var(--spring)}
+.wbtn:hover{transform:scale(1.06) rotate(-1deg)}
+.wbtn svg{width:14px;height:14px}
+.wl-form{display:flex;gap:12px;margin-top:4px;flex-wrap:wrap;width:100%}
+#wl-addr{flex:1;min-width:230px;background:#0d0f16;border:1px solid #2a2e3c;border-radius:14px;
+  padding:15px 16px;color:var(--bone);font-family:ui-monospace,Menlo,monospace;font-size:13px;outline:none;
+  transition:border-color .2s}
+#wl-addr:focus{border-color:var(--gold)}
+#wl-addr.bad{animation:shake .4s;border-color:#e05a5a}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+#wl-submit{font-family:'Anton';font-size:15px;letter-spacing:.06em;padding:14px 26px;border-radius:14px;
+  background:var(--gold);color:var(--void);text-transform:uppercase;
+  transition:transform .15s var(--spring);filter:drop-shadow(0 8px 18px rgba(230,177,58,.3))}
+#wl-submit:hover{transform:scale(1.06) rotate(-1deg)}
+#wl-submit:active{transform:scale(.93)}
+.wl-done{display:none;text-align:center;margin-top:56px}
+.wl-done .anton{font-size:clamp(34px,5vw,72px);color:var(--gold-2);text-transform:uppercase;
+  text-shadow:0 3px 0 #2c2513,0 10px 24px rgba(0,0,0,.5)}
+.wl-done .script{display:block;margin-top:10px;font-size:clamp(24px,3vw,40px);color:var(--bone)}
+.wl-done .mono{margin-top:18px;font-size:12px;color:#8a93a8;letter-spacing:.06em;word-break:break-all;padding:0 20px}
+#wl.submitted .wl-steps{display:none}
+#wl.submitted .wl-done{display:block}
+.wl-note{text-align:center;margin-top:30px;font-size:12px;color:#8a93a8;letter-spacing:.04em}
+
 /* ---------- toast ---------- */
 #toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(240%);z-index:150;
   visibility:hidden;opacity:0;transition:transform .45s var(--spring),opacity .3s,visibility 0s .45s}
@@ -430,6 +476,7 @@ body.party .live .sp,body.party .char .sp{animation:boing .58s var(--spring) inf
     <a href="#arcade" data-cur>Arcade</a>
     <a href="#six" data-cur>The Six</a>
     <a href="#mint" data-cur>Mint</a>
+    <a href="#wl" data-cur>Whitelist</a>
   </div>
   <div class="nav-r">
     <span class="chip mono mint-chip">0.000321 ETH</span>
@@ -627,6 +674,46 @@ body.party .live .sp,body.party .char .sp{animation:boing .58s var(--spring) inf
         <div class="tx"><span class="t1">MINT A JIGGIE</span><span class="t2">0.000321 eth each</span></div>
       </button>
     </div>
+  </div>
+</section>
+
+<!-- ================= WHITELIST ================= -->
+<div class="jig-edge" data-fill="#12141b"></div>
+<section id="wl">
+  <div class="wrap">
+    <div class="wl-h">
+      <p class="kicker reveal">chapter five · the list</p>
+      <h2 class="anton reveal">GET ON THE LIST</h2>
+      <span class="script reveal">bring your wallet, earn your piece</span>
+    </div>
+    <div class="wl-steps">
+      <div class="wstep reveal" id="ws1">
+        <span class="nb"><svg viewBox="0 0 120 120"><path fill="#2a2e3c" d="M22 22h22a14 14 0 1 1 32 0h22v22a14 14 0 1 0 0 32v22H76a14 14 0 1 1-32 0H22V76a14 14 0 1 1 0-32z"/></svg><i>1</i></span>
+        <span class="tt"><b>Follow the maker</b><small>@heefleursss dreamt the whole pile</small></span>
+        <a class="wbtn" href="https://x.com/heefleursss" target="_blank" rel="noopener noreferrer" data-cur>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1 2h6.5l4.4 5.9L18.9 2z"/></svg>
+          Follow</a>
+      </div>
+      <div class="wstep reveal" id="ws2">
+        <span class="nb"><svg viewBox="0 0 120 120"><path fill="#2a2e3c" d="M22 22h22a14 14 0 1 1 32 0h22v22a14 14 0 1 0 0 32v22H76a14 14 0 1 1-32 0H22V76a14 14 0 1 1 0-32z"/></svg><i>2</i></span>
+        <span class="tt"><b>Like the pinned post</b><small>one tap, pure joy</small></span>
+        <a class="wbtn" href="https://x.com/heefleursss/status/2062050060255297553" target="_blank" rel="noopener noreferrer" data-cur>&#9829; Like it</a>
+      </div>
+      <div class="wstep reveal" id="ws3">
+        <span class="nb"><svg viewBox="0 0 120 120"><path fill="#2a2e3c" d="M22 22h22a14 14 0 1 1 32 0h22v22a14 14 0 1 0 0 32v22H76a14 14 0 1 1-32 0H22V76a14 14 0 1 1 0-32z"/></svg><i>3</i></span>
+        <span class="tt"><b>Drop your EVM address</b><small>where your jiggie will live</small></span>
+        <div class="wl-form">
+          <input id="wl-addr" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="0x..." maxlength="42"/>
+          <button id="wl-submit" data-cur>Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="wl-done">
+      <div class="anton">YOU ARE IN.</div>
+      <span class="script">the pile remembers</span>
+      <p class="mono" id="wl-echo"></p>
+    </div>
+    <p class="wl-note reveal">One address per collector. Follows and likes get checked by hand before mint.</p>
   </div>
 </section>
 
@@ -1076,6 +1163,42 @@ document.getElementById('cta').addEventListener('click',e=>{
 });
 
 const mt=document.getElementById('marq-track'); mt.appendChild(mt.children[0].cloneNode(true));
+
+/* ================= WHITELIST =================
+   PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW (see setup notes).
+   Search for: WL_ENDPOINT                                            */
+const WL_ENDPOINT = "https://script.google.com/macros/s/AKfycbxT7bG7y7v4clW6D-AEFbq84Yb4BwmdHtw-qkT8QoLc8uFPQisqz0y-U1oF1a_5wYSNpA/exec";
+(function(){
+  const ws1=document.getElementById('ws1'), ws2=document.getElementById('ws2');
+  const addr=document.getElementById('wl-addr'), btn=document.getElementById('wl-submit');
+  const wl=document.getElementById('wl');
+  [ws1,ws2].forEach(el=>{
+    el.querySelector('a').addEventListener('click',()=>{ el.classList.add('done'); blip('pop'); });
+  });
+  const prev = store('jig-wl');
+  if(prev){ wl.classList.add('submitted'); document.getElementById('wl-echo').textContent=prev; }
+  btn.addEventListener('click',e=>{
+    const v=addr.value.trim();
+    if(!/^0x[a-fA-F0-9]{40}$/.test(v)){
+      addr.classList.remove('bad'); void addr.offsetWidth; addr.classList.add('bad');
+      blip('miss'); showToast('THAT IS NOT A VALID EVM ADDRESS'); return;
+    }
+    if(!ws1.classList.contains('done') || !ws2.classList.contains('done')){
+      blip('miss'); showToast('FINISH STEP 1 AND 2 FIRST'); return;
+    }
+    if(store('jig-wl')){ showToast('ALREADY SUBMITTED, FRIEND'); return; }
+    if(!WL_ENDPOINT){ blip('miss'); showToast('SUBMISSIONS OPEN SOON'); return; }
+    try{
+      fetch(WL_ENDPOINT,{method:'POST',mode:'no-cors',
+        headers:{'Content-Type':'text/plain'},
+        body:JSON.stringify({address:v, ts:new Date().toISOString(), ua:(navigator.userAgent||'').slice(0,90)})});
+    }catch(err){}
+    store('jig-wl', v);
+    document.getElementById('wl-echo').textContent=v;
+    wl.classList.add('submitted');
+    blip('fanfare'); burst(e.clientX||innerWidth/2, e.clientY||innerHeight/2, '#ffd976', 14);
+  });
+})();
 
 })();
 </script>
